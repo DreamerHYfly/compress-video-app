@@ -1,0 +1,18 @@
+body {
+    @apply bg-slate-100;
+    font-family: 'fzstk', Georgia, 'Times New Roman', Times, serif;
+}
+
+@font-face {
+    font-family: 'SimSun';
+    src: url('./fonts/SIMSUN.TTC') format('truetype'); /* 这里的路径要指向宋体文件 */
+  }
+
+@font-face {
+  font-family: 'sthupo';
+  src: url('./fonts/STHUPO.TTF') format('truetype'); /* 这里的路径要指向宋体文件 */
+}
+@font-face {
+  font-family: 'fzstk';
+  src: url('./fonts/FZSTK.TTF') format('truetype'); /* 这里的路径要指向宋体文件 */
+}

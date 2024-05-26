@@ -20,14 +20,12 @@ import { storeToRefs } from 'pinia'
 
 const store = useResolutionStore()
 const { folderpath } = storeToRefs(store)
-if (folderpath.value == '') {
-  folderpath.value = 'D:\\Desktop'
-}
 
 function selectfolder() {
   window.electron.ipcRenderer.send('open-Directory')
   window.electron.ipcRenderer.on('Directory-opened', (event, filePath) => {
-    if (event && filePath) folderpath.value = filePath ? filePath : 'D:\\Desktop'
+    if (event && filePath)
+      folderpath.value = window.path.join((filePath ? filePath : 'D:\\Desktop') + 'file')
   })
 }
 </script>

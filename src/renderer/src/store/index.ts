@@ -10,7 +10,7 @@ export const useResolutionStore = defineStore('resolution', () => {
   const frames = ref([60, 30])
   const frame = ref(60)
   const value1 = ref(45)
-  const folderpath = ref('')
+  const folderpath = ref('D:\\Desktop\\compressedfile')
 
   const videospath = reactive<videopathinterface[]>([])
 

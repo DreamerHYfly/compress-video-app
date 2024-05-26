@@ -18,7 +18,7 @@ import { Plus, UpdateRotation } from '@icon-park/vue-next'
 import { storeToRefs } from 'pinia'
 import { useResolutionStore } from '@renderer/store'
 const store = useResolutionStore()
-const { videospath } = storeToRefs(store)
+const { folderpath, videospath } = storeToRefs(store)
 import { useFFmpegStore } from '@renderer/store/ffmpeg'
 const ffmpegstore = useFFmpegStore()
 function addvideofiles() {
@@ -53,8 +53,16 @@ function startchangecode() {
   if (videospath.value.length > 0) {
     for (const videopath of videospath.value) {
       if (videopath.progress < 100) {
-        ffmpegstore.starttransecode(videopath)
-        ffmpegstore.filechangepregress(videopath)
+        window.fs.exists(folderpath.value, (exist) => {
+          if (exist) {
+            ffmpegstore.starttransecode(videopath)
+            ffmpegstore.filechangepregress(videopath)
+          } else {
+            window.fs.mkdirSync(folderpath.value)
+            ffmpegstore.starttransecode(videopath)
+            ffmpegstore.filechangepregress(videopath)
+          }
+        })
       }
     }
   }

@@ -33,16 +33,16 @@ function alldelete() {
   })
   videospath.value.length = 0
 
-  window.fs.readdir(folderpath.value, (err, files) => {
-    if (err) throw err
-    for (const file of files) {
-      const filePath = window.path.join(folderpath.value, file)
-      window.fs.unlink(filePath, (err) => {
-        if (err) throw err
-        console.log(`${filePath} was deleted!`)
-      })
-    }
-  })
+  // window.fs.readdir(folderpath.value, (err, files) => {
+  //   if (err) throw err
+  //   for (const file of files) {
+  //     const filePath = window.path.join(folderpath.value, file)
+  //     window.fs.unlink(filePath, (err) => {
+  //       if (err) throw err
+  //       console.log(`${filePath} was deleted!`)
+  //     })
+  //   }
+  // })
 }
 function allreset() {
   videospath.value.every((item) => {
